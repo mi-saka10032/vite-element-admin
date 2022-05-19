@@ -8,6 +8,8 @@
 
 > 4.修改了一些语法上的bug。
 
+> 5.vite版本的后台简易模板系统点击这里<a href="https://gitee.com/mi-sa-ka10032/vite-element-template">vite-element-template</a>
+
 <p align="center">
   <a href="https://github.com/vitejs">
     <img src="https://img.shields.io/badge/vite-2.9.9-brightgreen.svg" alt="vite">
