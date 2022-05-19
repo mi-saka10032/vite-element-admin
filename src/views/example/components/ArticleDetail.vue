@@ -83,7 +83,7 @@ import Sticky from '@/components/Sticky/index.vue' // 粘性header组件
 import { validURL } from '@/utils/validate'
 import { fetchArticle } from '@/api/article'
 import { searchUser } from '@/api/remote-search'
-import Warning from './Warning'
+import Warning from './Warning.vue'
 import { CommentDropdown, PlatformDropdown, SourceUrlDropdown } from './Dropdown'
 
 const defaultForm = {

@@ -9,8 +9,8 @@ import CodeMirror from 'codemirror'
 import 'codemirror/addon/lint/lint.css'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/rubyblue.css'
-// import 'script-loader!jsonlint'
-require('script-loader!jsonlint')
+// import from 'jsonlint/lib/jsonlint', but jsonlint based on cjs, so put it in utils dir.
+import '@/utils/jsonlint'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/lint/lint'
 import 'codemirror/addon/lint/json-lint'

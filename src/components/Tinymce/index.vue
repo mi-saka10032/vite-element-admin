@@ -15,10 +15,56 @@
 import editorImage from './components/EditorImage.vue'
 import plugins from './plugins'
 import toolbar from './toolbar'
-import load from './dynamicLoadScript'
+// import load from './dynamicLoadScript'
+
+/**
+ * description: full tinymce
+ */
+import tinymce from 'tinymce/tinymce'
+window.tinymce = tinymce
+import 'tinymce/icons/default/icons'
+import 'tinymce/themes/silver'
+import 'tinymce/plugins/image'
+import 'tinymce/plugins/media'
+import 'tinymce/plugins/table'
+import 'tinymce/plugins/lists'
+import 'tinymce/plugins/contextmenu'
+import 'tinymce/plugins/wordcount'
+import 'tinymce/plugins/colorpicker'
+import 'tinymce/plugins/textcolor'
+import 'tinymce/plugins/preview'
+import 'tinymce/plugins/code'
+import 'tinymce/plugins/link'
+import 'tinymce/plugins/advlist'
+import 'tinymce/plugins/codesample'
+import 'tinymce/plugins/hr'
+import 'tinymce/plugins/fullscreen'
+import 'tinymce/plugins/textpattern'
+import 'tinymce/plugins/searchreplace'
+import 'tinymce/plugins/autolink'
+import 'tinymce/plugins/directionality'
+import 'tinymce/plugins/visualblocks'
+import 'tinymce/plugins/visualchars'
+import 'tinymce/plugins/template'
+import 'tinymce/plugins/charmap'
+import 'tinymce/plugins/nonbreaking'
+import 'tinymce/plugins/insertdatetime'
+import 'tinymce/plugins/imagetools'
+import 'tinymce/plugins/autosave'
+import 'tinymce/plugins/autoresize'
+import 'tinymce/plugins/anchor'
+import 'tinymce/plugins/emoticons'
+import 'tinymce/plugins/emoticons/js/emojis'
+import 'tinymce/plugins/noneditable'
+import 'tinymce/plugins/paste'
+import 'tinymce/plugins/print'
+import 'tinymce/plugins/pagebreak'
+import 'tinymce/plugins/save'
+import 'tinymce/plugins/spellchecker'
+import 'tinymce/plugins/tabfocus'
 
 // why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
-const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js'
+// const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js'
 
 export default {
   name: 'Tinymce',
@@ -64,7 +110,7 @@ export default {
       fullscreen: false,
       languageTypeList: {
         'en': 'en',
-        'zh': 'zh_CN',
+        'zh': 'zh-Hans',
         'es': 'es_MX',
         'ja': 'ja'
       }
@@ -77,6 +123,12 @@ export default {
         return `${width}px`
       }
       return width
+    },
+    langUrl() {
+      return '/static/tinymce/langs/zh-Hans.js'
+    },
+    skinUrl() {
+      return '/static/tinymce/skins/ui/oxide'
     }
   },
   watch: {
@@ -103,20 +155,17 @@ export default {
   },
   methods: {
     init() {
-      // dynamic load tinymce from cdn
-      load(tinymceCDN, (err) => {
-        if (err) {
-          this.$message.error(err.message)
-          return
-        }
-        this.initTinymce()
-      })
+      this.initTinymce()
     },
     initTinymce() {
       const _this = this
-      window.tinymce.init({
+      tinymce.init({
         selector: `#${this.tinymceId}`,
-        language: this.languageTypeList['en'],
+        language: this.languageTypeList['zh'],
+        // public dir
+        language_url: this.langUrl,
+        // public dir
+        skin_url: this.skinUrl,
         height: this.height,
         body_class: 'panel-body ',
         object_resizing: false,
@@ -204,6 +253,7 @@ export default {
       window.tinymce.get(this.tinymceId).getContent()
     },
     imageSuccessCBK(arr) {
+      console.log(arr)
       arr.forEach(v => window.tinymce.get(this.tinymceId).insertContent(`<img class="wscnph" src="${v.url}" >`))
     }
   }
