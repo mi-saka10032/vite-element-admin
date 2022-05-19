@@ -1,9 +1,9 @@
 # 注意！
 
-1.该项目仅是`vue-element-admin`的vite版本，将项目中的vue-cli脚手架替换为了vite运行，其余功能不变。
-2.由于vite项目中不再支持CJS规范，因此大量的require语法失效，部分依赖因此做了相应的变更或本地化。
-3.针对tinymce编辑器在线js文件被墙的问题，专门安装了对应的tinymce依赖和汉化语言包进行本地引入。
-4.修改了一些语法上的bug。
+> 1.该项目仅是`vue-element-admin`的vite版本，将项目中的vue-cli脚手架替换为了vite运行，其余功能不变。
+> 2.由于vite项目中不再支持CJS规范，因此大量的require语法失效，部分依赖因此做了相应的变更或本地化。
+> 3.针对tinymce编辑器在线js文件被墙的问题，专门安装了对应的tinymce依赖和汉化语言包进行本地引入。
+> 4.修改了一些语法上的bug。
 
 <p align="center">
   <a href="https://github.com/vitejs">
