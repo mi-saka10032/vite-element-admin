@@ -21,6 +21,7 @@ import toolbar from './toolbar'
  * description: full tinymce
  */
 import tinymce from 'tinymce/tinymce'
+import 'tinymce/skins/content/default/content.css'
 window.tinymce = tinymce
 import 'tinymce/icons/default/icons'
 import 'tinymce/themes/silver'
@@ -166,6 +167,7 @@ export default {
         language_url: this.langUrl,
         // public dir
         skin_url: this.skinUrl,
+        content_css: '',
         height: this.height,
         body_class: 'panel-body ',
         object_resizing: false,
